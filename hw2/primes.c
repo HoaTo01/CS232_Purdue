@@ -31,16 +31,16 @@ int main(int argc, const char** argv){
         int isPrime = 0;
         /* TODO: fill in the code that outputs the prime numbers */
         /*   in the range [lowerBound,upperBound] in ascending order */
-        for (i = lowerBound;i<=upperBound;i++)
+        for (i = lowerBound; i <= upperBound; i++)
         {
-            if (i==1)
+            if (i == 1)
                 continue;
             else
             {
                 isPrime = 0;
-                for (j=2; j<i;j++)
+                for (j = 2; j < i; j++)
                 {
-                    if ((i%j)==0)
+                    if ((i % j) == 0)
                     {
                         isPrime = 1;
                         break;
