@@ -1,8 +1,10 @@
 HW1 -> 100/100
-1. Create c9 account and share: 20/20 
+1. Create c9 account and share: 20/20
 2. Create bitbucket repo and share: 20/20
 3. Push code to repo: 20/20
-4. program can be compiled: 20/20 
+4. program can be compiled: 20/20
 5. program can be run correctly: 20/20
 
 HW2 -> 100/100
+
+HW3 -> 100/100
