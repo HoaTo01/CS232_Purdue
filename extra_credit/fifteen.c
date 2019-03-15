@@ -38,6 +38,7 @@ int main(int argc, string argv[])
 {
     int d;
     int **board;
+    int i;
     // ensure proper usage
     if (argc != 2)
     {
@@ -126,6 +127,12 @@ int main(int argc, string argv[])
 
     // close log
     fclose(file);
+
+    for (i = 0;i<d;i++)
+    {
+        free(board[i]);
+    }
+    free(board);
 
     // success
     return 0;
