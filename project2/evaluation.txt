@@ -1,0 +1,13 @@
+Due to the late partner assignment, Rodney already completed his implementation of the trie node structure as well as the function used to create and return a trie struct
+before I could contact him.
+-What I contributed:
++ the addWordOccurrence function
++ the freeTrieMemory function
+-What Rodney contributed:
++ the trie struct
++ the createNode function
++ the indexPage function
++ the printTrieContents
+-The debugging was done by both of us as we share the workspace and one would give an idea and the other tests it 
+-In conclusion, I estimate my contribution to be 40% and Rodney's is 60%. To clarify, if possible and his trie struct and createNode function also accounted, the ratio would 
+be 70/30 instead. He's the best guy I've ever worked with
