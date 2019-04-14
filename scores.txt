@@ -17,3 +17,5 @@ Project 1-> 197.5/200
 Extra credit -> 2/2
 
 Project 2-> 400/400
+
+Project 3 Part 1-> 200/200
