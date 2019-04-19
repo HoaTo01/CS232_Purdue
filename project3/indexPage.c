@@ -40,7 +40,7 @@ struct trie* indexPage(const char* url, int* pTotalNumTerms)
     buffer[i] = tolower(buffer[i]); //tolower ignores non-alphabetical characters
   }
   free(buffer);
-
+  root->totalWords=(*pTotalNumTerms);
   return root;
 }
 
@@ -94,7 +94,7 @@ void printTrieContents(const struct trie *root, int level, char* word)
 
   if (root->isEndOfWord)
   {
-   word[level] = 0;
+   word[level] = '\0';
    //printf("%s: %d\n", word, root->timesVisited);
   }
 
@@ -171,12 +171,15 @@ void getWordCount(const struct trie *root, int level, char* word, char *wordToFi
 
   if (root->isEndOfWord)
   {
-   word[level] = 0;
-   if(strcmp(wordToFind,word)==1)
+   word[level] = '\0';
+   if(strcmp(wordToFind,word)==0)
    {
      (*occurrence) = root->timesVisited;
+     //printf("strlen of %s is: %d\n",wordToFind,(int)strlen(wordToFind));
+     //printf("%s: %d\n", word, root->timesVisited);
    }
-   //printf("%s: %d\n", word, root->timesVisited);
+  // printf("Word to find is: %s\n",wordToFind);
+
   }
 
   int i;
@@ -185,7 +188,7 @@ void getWordCount(const struct trie *root, int level, char* word, char *wordToFi
     if (root->children[i] != NULL)
     {
         word[level] = i + 'a';
-        printTrieContents(root->children[i], level+1, word);
+        getWordCount(root->children[i], level+1, word, wordToFind, occurrence);
     }
   }
 }

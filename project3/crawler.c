@@ -1,6 +1,17 @@
 #include "crawler.h"
 #include "indexPage.h"
 
+int size (struct listNode *pNode)
+{
+  struct listNode *pCur = pNode;
+  int count = 0;
+  while(pCur != NULL)
+  {
+    count++;
+    pCur = pCur->next;
+  }
+  return(count);
+}
 int contains(const struct listNode *pNode, const char *addr)
 {
   if (pNode == NULL)
@@ -16,12 +27,11 @@ void insertBack(struct listNode *pNode, const char *addr, int *totalTerms)
 
   if (pNode->next == NULL)
   {
-    struct listNode* nodeToAdd;
-
-    nodeToAdd = (struct listNode*)malloc(sizeof(struct listNode));
+    struct listNode *nodeToAdd = (struct listNode*)malloc(sizeof(struct listNode));
     strcpy(nodeToAdd->addr,addr);
     nodeToAdd->next = NULL;
     nodeToAdd->root = indexPage(addr,totalTerms);
+    nodeToAdd->score = 0.0000;
 
     pNode->next = nodeToAdd;
   }
@@ -117,7 +127,7 @@ struct listNode *getLast(struct listNode *pNode)
       return(pNode);
   else
   {
-    return(pNode->next);
+    return(getLast(pNode->next));
   }
 }
 void printList(const struct listNode *pNode)
@@ -130,4 +140,27 @@ void printList(const struct listNode *pNode)
     printList(pNode->next);
   }
   return;
+}
+char *getAddrAt(struct listNode *pNode, int index)
+{
+    struct listNode *pCur = pNode;
+    int i =0;
+
+    while(i<index)
+    {
+      pCur = pCur->next;
+      i++;
+    }
+    return(pCur->addr);
+
+}
+void resetScore(struct listNode *pNode)
+{
+  struct listNode *pCur = pNode;
+
+  while(pCur != NULL)
+  {
+    pCur->score = 0.0;
+    pCur = pCur->next;
+  }
 }

@@ -13,6 +13,7 @@ struct trie {
   char character; //character of a word
   int timesVisited; //how many times a word was visited
   int isEndOfWord; //boolean
+  int totalWords;
 
   struct trie *children[ALPHABET_SIZE];
 };
@@ -28,5 +29,7 @@ int freeTrieMemory(struct trie *root);
 int getText(const char* srcAddr, char* buffer, const int bufSize);
 
 struct trie* createNode(void);
+
+void getWordCount(const struct trie *root, int level, char* word, char *wordToFind, int *occurrence);
 
 #endif

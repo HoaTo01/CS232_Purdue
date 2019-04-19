@@ -1,14 +1,15 @@
 #include "crawler.c"
 #include "indexPage.c"
+#include "tf_idf.c"
 
-//#define MAX_QUERY_SIZE 100
+#define MAX_QUERY_SIZE 100
 
 int main(int argc, char** argv)
 {
     char startAddr[MAX_ADDR_LENGTH];
     char destAddr[MAX_ADDR_LENGTH];
     char url[MAX_ADDR_LENGTH];
-    //char query[MAX_QUERY_SIZE];
+    char query[MAX_QUERY_SIZE];
     FILE *fp;
 
     long seed;
@@ -57,8 +58,9 @@ int main(int argc, char** argv)
 
                 insertBack(pListStart, startAddr, &totalNumTerms);
                 char word[MAX_CHARACTERS];
-
+                //printf("\"%s\n\n\"",getLast(pListStart)->root->)
                 printTrieContents((getLast(pListStart))->root, 0, word);
+                //(getLast(pListStart))->root->totalWords=totalNumTerms;
                 //printf("Total number of words is: %d\n",totalNumTerms);
                 n++;
             }
@@ -79,15 +81,27 @@ int main(int argc, char** argv)
             }
         }
     }
-    // printf("Enter a web query: ");
-    // while(scanf("%s",query) != EOF)
-    // {
-    //     char word[MAX_QUERY_SIZE];
-    //     printf("Query is \"%s\"\n",query);
-    //     while()
+    printf("\nEnter a web query: ");
+    while(fgets(query,MAX_QUERY_SIZE,stdin))
+    {
+        if(query[0] == '\n')
+            break;
+        query[strlen(query)-1] = '\0';
+        //printf("Length of query: %d\n",(int)strlen(query));
+        if(validInput(query)==0)
+        {
+            printf("\nEnter a web query: ");
+            continue;
+        }
+        printf("Query is \"%s\".\n",query);
+        score(pListStart,query);
 
-    //     printf("Enter a web query: ");
-    // }
+        printf("Web pages:\n");
+        topThreeScores(pListStart->next);
+        resetScore(pListStart->next);
+        printf("\nEnter a web query: ");
+    }
+    printf("Exiting the program\n");
     fclose(fp);
     destroyList(pListStart);
 
