@@ -1,0 +1,14 @@
+ubuntu ./project1/crawler.c
+ubuntu ./hw2/primes.c
+ubuntu ./practice/vowel.c
+ubuntu ./practice/thePracticeBomb.c
+ubuntu ./practice/test.c
+ubuntu ./practice/factorial.c
+ubuntu ./project2/indexPage.c
+ubuntu ./hw4/theBomb.c
+ubuntu ./hw3/fifteen.c
+ubuntu ./project3/indexPage.c
+ubuntu ./project3/crawler.c
+ubuntu ./project3/webSearch.c
+ubuntu ./project3/tf_idf.c
+ubuntu ./extra_credit/fifteen.c

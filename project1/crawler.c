@@ -179,7 +179,6 @@ void destroyList(struct listNode *pNode)
   }
   else
   {
-    destroyList(pNode->next);
     free(pNode);
     return;
   }
